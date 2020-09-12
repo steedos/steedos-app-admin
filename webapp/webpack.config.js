@@ -50,4 +50,8 @@ module.exports = {
         publicPath: '/',
         filename: 'webapp.client.js',
     },
+    optimization: {
+      minimize: false
+    }
+  
 };
