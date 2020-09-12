@@ -126,14 +126,14 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _SteedosComponent = _interopRequireDefault(__webpack_require__(4));
+var _SteedosTemplate = _interopRequireDefault(__webpack_require__(4));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class HelloWorld extends _react.default.Component {
   render() {
-    return /*#__PURE__*/_react.default.createElement("div", null, "hello world.", /*#__PURE__*/_react.default.createElement(_SteedosComponent.default, {
-      template: "creator_about"
+    return /*#__PURE__*/_react.default.createElement("div", null, "hello world.", /*#__PURE__*/_react.default.createElement(_SteedosTemplate.default, {
+      name: "creator_about"
     }));
   }
 
@@ -164,7 +164,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-class SteedosComponent extends _react.Component {
+class SteedosTemplate extends _react.Component {
   constructor(props, context) {
     super(props, context);
     this.Blaze = window.Blaze;
@@ -177,35 +177,35 @@ class SteedosComponent extends _react.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.template != this.props.template) {
+    if (prevProps.name != this.props.name) {
       this.Blaze.remove(this._blazeView);
       this.renderBlazeView();
     }
   }
 
   renderBlazeView() {
-    this._blazeData = new this.ReactiveVar(_.omit(this.props, 'template'));
-    let template,
-        tArg = this.props.template;
+    this._blazeData = new this.ReactiveVar(_.omit(this.props, 'name'));
+    let name,
+        tArg = this.props.name;
 
     if (typeof tArg === 'string') {
-      template = this.Template[tArg];
-      if (!template) throw new Error(`No Template["${tArg}"] exists.  If this template ` + "originates in your app, make sure you have the `templating` " + "package installed (and not, for e.g. `static-html`)");
+      name = this.Template[tArg];
+      if (!name) throw new Error(`No Template["${tArg}"] exists.  If this name ` + "originates in your app, make sure you have the `templating` " + "package installed (and not, for e.g. `static-html`)");
     } else if (tArg instanceof this.Blaze.Template) {
-      template = tArg;
+      name = tArg;
     } else {
-      throw new Error("Invalid template= argument specified.  Expected " + "the string name of an existing Template, or the template " + "itself, instead got ''" + typeof tArg + ": " + JSON.stringify(tArg));
+      throw new Error("Invalid name= argument specified.  Expected " + "the string name of an existing Template, or the name " + "itself, instead got ''" + typeof tArg + ": " + JSON.stringify(tArg));
     }
 
-    this._blazeView = this.Blaze.renderWithData(template, () => this._blazeData.get(), _reactDom.default.findDOMNode(this._blazeRef));
+    this._blazeView = this.Blaze.renderWithData(name, () => this._blazeData.get(), _reactDom.default.findDOMNode(this._blazeRef));
   }
 
   shouldComponentUpdate(nextProps) {
     // this used to be in (the now deprecated) componentWillReceiveProps
-    this._blazeData.set(_.omit(nextProps, 'template')); // Never call render() for props except template again; Blaze will do what's necessary.
+    this._blazeData.set(_.omit(nextProps, 'name')); // Never call render() for props except name again; Blaze will do what's necessary.
 
 
-    return nextProps.template !== this.props.template;
+    return nextProps.name !== this.props.name;
   }
 
   componentWillUnmount() {
@@ -221,7 +221,7 @@ class SteedosComponent extends _react.Component {
 
 }
 
-var _default = SteedosComponent;
+var _default = SteedosTemplate;
 exports.default = _default;
 
 /***/ }),

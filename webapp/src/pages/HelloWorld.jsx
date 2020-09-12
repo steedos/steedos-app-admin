@@ -1,11 +1,11 @@
 import React from 'react';
-import SteedosComponent from '../components/SteedosComponent';
+import SteedosTemplate from '../components/SteedosTemplate';
 
 class HelloWorld extends React.Component {
   render() {
     return (
       <div>hello world.
-        <SteedosComponent template="creator_about"/>
+        <SteedosTemplate name="creator_about"/>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class SteedosComponent extends Component {
+class SteedosTemplate extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -15,33 +15,33 @@ class SteedosComponent extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.template != this.props.template) {
+    if (prevProps.name != this.props.name) {
       this.Blaze.remove(this._blazeView);
       this.renderBlazeView();
     }
   }
 
   renderBlazeView() {
-    this._blazeData = new this.ReactiveVar(_.omit(this.props, 'template'));
+    this._blazeData = new this.ReactiveVar(_.omit(this.props, 'name'));
 
-    let template, tArg = this.props.template;
+    let name, tArg = this.props.name;
     if (typeof tArg === 'string') {
-      template = this.Template[tArg];
-      if (!template)
-        throw new Error(`No Template["${tArg}"] exists.  If this template `
+      name = this.Template[tArg];
+      if (!name)
+        throw new Error(`No Template["${tArg}"] exists.  If this name `
           + "originates in your app, make sure you have the `templating` "
           + "package installed (and not, for e.g. `static-html`)");
     } else if (tArg instanceof this.Blaze.Template) {
-      template = tArg;
+      name = tArg;
     } else {
-        throw new Error("Invalid template= argument specified.  Expected "
-          + "the string name of an existing Template, or the template "
+        throw new Error("Invalid name= argument specified.  Expected "
+          + "the string name of an existing Template, or the name "
           + "itself, instead got ''" + typeof tArg + ": "
           + JSON.stringify(tArg));
     }
 
     this._blazeView = this.Blaze.renderWithData(
-      template,
+      name,
       () => this._blazeData.get(),
       ReactDOM.findDOMNode(this._blazeRef)
     );
@@ -49,10 +49,10 @@ class SteedosComponent extends Component {
 
   shouldComponentUpdate(nextProps) {
     // this used to be in (the now deprecated) componentWillReceiveProps
-    this._blazeData.set(_.omit(nextProps, 'template'));
+    this._blazeData.set(_.omit(nextProps, 'name'));
 
-    // Never call render() for props except template again; Blaze will do what's necessary.
-    return nextProps.template !== this.props.template;
+    // Never call render() for props except name again; Blaze will do what's necessary.
+    return nextProps.name !== this.props.name;
   }
 
   componentWillUnmount() {
@@ -65,4 +65,4 @@ class SteedosComponent extends Component {
 
 }
 
-export default SteedosComponent;
+export default SteedosTemplate;
