@@ -1,3 +1,4 @@
+code: app_builder
 _id: app_builder
 name: 应用开发
 description: 通过配置对象、字段、权限，零代码开发业务系统。
@@ -10,3 +11,4 @@ objects:
   - process_definition
   - reports
   - datasources
+visible: true
