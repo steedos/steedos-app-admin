@@ -1,7 +1,7 @@
 {
   "name": "@steedos/app-admin",
   "private": false,
-  "version": "1.23.23",
+  "version": "2.0.0",
   "description": "Enterprise plugin for steedos",
   "main": "index.js",
   "repository": {
@@ -17,14 +17,14 @@
     "pub_next": "npm publish --tag next --registry https://registry.npmjs.org && start https://npm.taobao.org/sync/@steedos/app-admin"
   },
   "dependencies": {
-    "@steedos/service-metadata-server": "~1.0.0",
-    "@steedos/service-package-loader": "~0.0.1",
-    "@steedos/service-steedos-server": "~0.0.1",
+    "@steedos/service-metadata-server": "^2.0.0",
+    "@steedos/service-package-loader": "^2.0.0",
+    "@steedos/service-steedos-server": "^2.0.0",
     "cross-env": "^7.0.3",
+    "dotenv-flow": "^3.2.0",
     "ioredis": "^4.22.0",
     "moleculer": "^0.14.12",
-    "moleculer-cli": "^0.7.1",
-    "dotenv-flow": "^3.2.0"
+    "moleculer-cli": "^0.7.1"
   },
   "author": "",
   "license": "ISC",

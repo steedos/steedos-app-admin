@@ -1,6 +1,6 @@
 {
   "name": "steedos-project-webapp",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "@steedos/react": "^1.18.15",
+    "@steedos/react": "^2.0.0",
     "marked": "^0.8.2",
     "react": "^16.12.0"
   }
